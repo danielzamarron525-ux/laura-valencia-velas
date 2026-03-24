@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laura Valencia | Natural Candles & Botanicals</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- VARIABLES Y RESETEO --- */
+        :root {
+            --primary-color: #2b2b2b;
+            --bg-color: #fbfaf8;
+            --accent-color: #8c907b;
+            --text-color: #4a4a4a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden; /* Evita desbordes en celular */
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            font-weight: 400;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        /* --- PANTALLA DE PORTADA (LOGO GIGANTE) --- */
+        .portada-logo {
+            width: 100%;
+            height: 100vh;
+            background-color: var(--bg-color);
+            background-image: url('fondo.jpg'); /* Tu fondo de textura */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .portada-logo img {
+            width: 90%; /* Ajuste para celular */
+            max-width: 700px;
+            height: auto;
+        }
+
+        .scroll-down {
+            margin-top: 50px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-color);
+            animation: flotar 2s ease-in-out infinite;
+            text-align: center;
+        }
+
+        @keyframes flotar {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* --- NAVEGACIÓN --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background-color: var(--bg-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            flex-wrap: wrap;
+        }
+
+        .logo-menu img {
+            height: 60px;
+            max-width: 100%;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav a {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- SECCIÓN PRINCIPAL (HERO) --- */
+        .hero {
+            height: 90vh;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(251, 250, 248, 0.7), rgba(251, 250, 248, 0.9)), url('https://images.unsplash.com/photo-1603006905003-be475563bc59?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            font-style: italic;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            background-color: var(--primary-color);
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* --- PRODUCTOS DESTACADOS --- */
+        .products-section {
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .products-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .product-card {
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .product-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .product-card p {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--primary-color);
+            color: #fff;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* =========================================
+           REGLAS ESPECÍFICAS PARA CELULARES
+           ========================================= */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 20px 5%;
+                position: relative;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                gap: 15px;
+            }
+
+            nav a {
+                font-size: 0.8rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .products-section {
+                padding: 50px 5%;
+            }
+
+            .product-card img {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="portada-logo">
+        <img src="logolaura.jpg.png" alt="Laura Valencia Logo">
+        <p class="scroll-down">Desliza hacia abajo ↓</p>
+    </section>
+
+    <header>
+        <div class="logo-menu">
+            <img src="logolaura.jpg.png" alt="Laura Valencia Logo Menú">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Tienda</a></li>
+                <li><a href="#">Colecciones</a></li>
+                <li><a href="#">Nuestra Historia</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Esencia en estado puro</h1>
+            <p>Velas botánicas vertidas a mano, inspiradas en la naturaleza.</p>
+            <a href="#productos" class="btn">Explorar Colección</a>
+        </div>
+    </section>
+
+    <section id="productos" class="products-section">
+        <h2>Colección Botánica</h2>
+        <div class="product-grid">
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1605651202774-7d573fd3f12d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Vela Lavanda y Salvia">
+                <h3>Lavanda & Salvia</h3>
+                <p>$450 MXN</p>
+                <button class="btn" style="width: 100%;">Añadir al carrito</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1596433809252-2591745db096?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Vela Vainilla y Sándalo">
+                <h3>Vainilla Silvestre</h3>
+                <p>$480 MXN</p>
+                <button class="btn" style="width: 100%;">Añadir al carrito</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1608181114510-4ed23e031cae?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Vela Cítricos">
+                <h3>Cítricos de Verano</h3>
+                <p>$420 MXN</p>
+                <button class="btn" style="width: 100%;">Añadir al carrito</button>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Laura Valencia - Natural Candles & Botanicals. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
