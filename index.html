@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <link rel="icon" type="image/png" href="logolaura.jpg.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laura Valencia | Natural Candles & Botanicals</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
+        /* --- SUAVIZADO DE DESPLAZAMIENTO --- */
+        html {
+            scroll-behavior: smooth !important;
+        }
+        
+
         /* --- VARIABLES Y RESETEO --- */
         :root {
             --primary-color: #2b2b2b;
@@ -25,7 +32,7 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
-            overflow-x: hidden; /* Evita desbordes en celular */
+            overflow-x: hidden;
         }
 
         h1, h2, h3 {
@@ -39,12 +46,12 @@
             color: var(--primary-color);
         }
 
-        /* --- PANTALLA DE PORTADA (LOGO GIGANTE) --- */
+        /* --- PORTADA --- */
         .portada-logo {
             width: 100%;
             height: 100vh;
             background-color: var(--bg-color);
-            background-image: url('fondo.jpg'); /* Tu fondo de textura */
+            background-image: url('fondo.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -56,7 +63,7 @@
         }
 
         .portada-logo img {
-            width: 90%; /* Ajuste para celular */
+            width: 90%;
             max-width: 700px;
             height: auto;
         }
@@ -115,7 +122,7 @@
             color: var(--accent-color);
         }
 
-        /* --- SECCIÓN PRINCIPAL (HERO) --- */
+        /* --- HERO --- */
         .hero {
             height: 90vh;
             min-height: 500px;
@@ -157,7 +164,7 @@
             background-color: var(--accent-color);
         }
 
-        /* --- PRODUCTOS DESTACADOS --- */
+        /* --- PRODUCTOS --- */
         .products-section {
             padding: 80px 5%;
             text-align: center;
@@ -181,9 +188,7 @@
             transition: transform 0.3s;
         }
 
-        .product-card:hover {
-            transform: translateY(-5px);
-        }
+        .product-card:hover { transform: translateY(-5px); }
 
         .product-card img {
             width: 100%;
@@ -192,10 +197,7 @@
             margin-bottom: 20px;
         }
 
-        .product-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
+        .product-card h3 { font-size: 1.5rem; margin-bottom: 10px; }
 
         .product-card p {
             color: var(--accent-color);
@@ -212,40 +214,49 @@
             margin-top: 50px;
         }
 
-        footer p {
-            font-size: 0.9rem;
-            opacity: 0.7;
+        footer p { font-size: 0.9rem; opacity: 0.7; }
+
+        /* --- RESPONSIVO --- */
+        @media (max-width: 768px) {
+            header { flex-direction: column; padding: 20px 5%; position: relative; }
+            nav ul { margin-top: 15px; gap: 15px; }
+            nav a { font-size: 0.8rem; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .products-section { padding: 50px 5%; }
+            .product-card img { height: 300px; }
+        }
+        /* --- BOTÓN FLOTANTE DE WHATSAPP --- */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
         }
 
-        /* =========================================
-           REGLAS ESPECÍFICAS PARA CELULARES
-           ========================================= */
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            color: #fff;
+        }
+
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                padding: 20px 5%;
-                position: relative;
-            }
-            
-            nav ul {
-                margin-top: 15px;
-                gap: 15px;
-            }
-
-            nav a {
-                font-size: 0.8rem;
-            }
-
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .products-section {
-                padding: 50px 5%;
-            }
-
-            .product-card img {
-                height: 300px;
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 25px;
             }
         }
     </style>
@@ -263,10 +274,10 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#">Tienda</a></li>
-                <li><a href="#">Colecciones</a></li>
-                <li><a href="#">Nuestra Historia</a></li>
-                <li><a href="#">Contacto</a></li>
+                <li><a href="#productos">Tienda</a></li>
+                <li><a href="#productos">Colecciones</a></li>
+                <li><a href="#historia">Nuestra Historia</a></li>
+                <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -279,37 +290,91 @@
         </div>
     </section>
 
+    <section id="historia" style="padding: 100px 10%; background-color: #fff; display: flex; align-items: center; gap: 60px; flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 300px;">
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.8rem; margin-bottom: 25px; color: #2b2b2b;">Arte, Pasión y un Nuevo Comienzo</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 20px; color: #4a4a4a; line-height: 1.8;">
+                La marca <strong>Laura Valencia</strong> nació de una profunda entrega a <strong>la creación artesanal</strong>. Para Laura, cada componente de la naturaleza es un lienzo en blanco y una oportunidad para expresar belleza.
+            </p>
+            <p style="font-size: 1.1rem; margin-bottom: 20px; color: #4a4a4a; line-height: 1.8;">
+                Tras años de cultivar su amor por el arte, comprendió que el presente es el único tiempo que importa para materializar una visión, demostrando que la creatividad no tiene límites, sino que se nutre de la experiencia.
+            </p>
+            <div style="font-style: italic; color: #8c907b; border-left: 3px solid #8c907b; padding-left: 20px; margin: 30px 0; font-size: 1.2rem; font-family: 'Playfair Display', serif;">
+                "Mi marca nació sobre la pasión por <strong>el arte de transformar</strong>. Considero que nunca es tarde para seguir tus sueños y crear algo hermoso con las manos."
+            </div>
+            <p style="font-size: 1.1rem; color: #4a4a4a; line-height: 1.8;">
+                Cada una de nuestras velas botánicas es una pieza única, vertida a mano con la paciencia y el detalle que solo una verdadera artista puede brindar.
+            </p>
+        </div>
+        <div style="flex: 1; min-width: 300px; text-align: center;">
+            <img src="vela.jpg" alt="Proceso artesanal Laura Valencia" style="width: 100%; border-radius: 2px; box-shadow: 20px 20px 0px #fbfaf8; filter: grayscale(10%);">
+        </div>
+    </section>
+
     <section id="productos" class="products-section">
         <h2>Colección Botánica</h2>
         <div class="product-grid">
-            
             <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1605651202774-7d573fd3f12d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Vela Lavanda y Salvia">
-                <h3>Lavanda & Salvia</h3>
-                <p>$450 MXN</p>
+                <img src="osofloral.HEIC" alt="Vela Lavanda y Salvia">
+                <h3>Oso floral</h3>
+                <p>$350 MXN</p>
                 <button class="btn" style="width: 100%;">Añadir al carrito</button>
             </div>
-
             <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1596433809252-2591745db096?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Vela Vainilla y Sándalo">
-                <h3>Vainilla Silvestre</h3>
-                <p>$480 MXN</p>
+                <img src="osoindividual.heic" alt="Vela Vainilla y Sándalo">
+                <h3>Oso individual</h3>
+                <p>$90 MXN</p>
                 <button class="btn" style="width: 100%;">Añadir al carrito</button>
             </div>
-
             <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1608181114510-4ed23e031cae?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Vela Cítricos">
-                <h3>Cítricos de Verano</h3>
-                <p>$420 MXN</p>
+                <img src="arreglofloral.heic" alt="Vela Cítricos">
+                <h3>Arreglo floral</h3>
+                <p>$60 MXN</p>
                 <button class="btn" style="width: 100%;">Añadir al carrito</button>
             </div>
+        </div>
+    </section>
 
+    <section id="contacto" style="padding: 100px 5%; background-color: #fbfaf8; text-align: center;">
+        <h2 style="font-size: 2.8rem; margin-bottom: 20px;">Contacto</h2>
+        <p style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; margin-bottom: 40px; color: #8c907b;">
+            ¿Tienes alguna duda o deseas un pedido especial? Me encantará escucharte.
+        </p>
+
+        <div style="max-width: 700px; margin: 0 auto; background: #fff; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); border-radius: 2px;">
+            <form action="https://formsubmit.co/lavago73@email.com" method="POST">
+                <input type="hidden" name="_subject" value="Nuevo mensaje - Laura Valencia">
+                <input type="hidden" name="_captcha" value="false">
+
+                <div style="margin-bottom: 25px; text-align: left;">
+                    <label style="display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: bold;">Nombre Completo</label>
+                    <input type="text" name="name" required style="width: 100%; padding: 12px; border: 1px solid #e0e0e0; outline: none;">
+                </div>
+
+                <div style="margin-bottom: 25px; text-align: left;">
+                    <label style="display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: bold;">Correo Electrónico</label>
+                    <input type="email" name="email" required style="width: 100%; padding: 12px; border: 1px solid #e0e0e0; outline: none;">
+                </div>
+
+                <div style="margin-bottom: 25px; text-align: left;">
+                    <label style="display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: bold;">Tu Mensaje</label>
+                    <textarea name="message" rows="5" required style="width: 100%; padding: 12px; border: 1px solid #e0e0e0; outline: none; resize: vertical;"></textarea>
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%; cursor: pointer;">
+                    Enviar Mensaje
+                </button>
+            </form>
         </div>
     </section>
 
     <footer>
         <p>&copy; 2026 Laura Valencia - Natural Candles & Botanicals. Todos los derechos reservados.</p>
     </footer>
-
+<a href="https://wa.me/+523316050151?text=Hola%20Laura,%20me%20gustaría%20saber%20más%20sobre%20tus%20velas%20botánicas." class="whatsapp-float" target="_blank">
+        <svg width="35" height="35" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.148-.67-1.611-.917-2.206-.242-.589-.487-.51-.67-.51h-.572c-.197 0-.518.074-.788.374-.271.301-1.038 1.015-1.038 2.479 0 1.464 1.066 2.877 1.213 3.076.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.72.938 3.659 1.434 5.628 1.434h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
 </body>
 </html>
